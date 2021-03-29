@@ -3,6 +3,7 @@ package adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -46,17 +47,17 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MainVi
 
     class MainViewHolder extends RecyclerView.ViewHolder{
 
-        final RadioButton radioButton;
+        final CheckBox checkBox;
 
         public MainViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            radioButton = itemView.findViewById(R.id.radioButton);
+            checkBox = itemView.findViewById(R.id.checkBox);
         }
 
         public void bind(TodoItem item){
-            radioButton.setText(item.head);
-            radioButton.setChecked(item.isCheck);
+            checkBox.setText(item.head);
+            checkBox.setChecked(item.isCheck);
         }
     }
 

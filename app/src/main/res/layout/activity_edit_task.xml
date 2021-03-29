@@ -7,27 +7,43 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/addTextTextPersonName"
+        android:id="@+id/NameOfTask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint="Name of task"
         android:inputType="textPersonName"
-        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleCreatingTask" />
+
+    <TextView
+        android:id="@+id/TitleCreatingTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:text="Creating a Task"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Title.Media"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+    <CalendarView
+        android:id="@+id/CreatingCalendarView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTextTextPersonName"
-        tools:listitem="@layout/item_add_task" />
+        app:layout_constraintTop_toBottomOf="@+id/NameOfTask" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

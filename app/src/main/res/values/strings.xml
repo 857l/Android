@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string name="fragment_task">task</string>
+    <string name="fragment_calendar">calendar</string>
+    <string name="fragment_settings">settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

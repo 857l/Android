@@ -48,16 +48,19 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MainVi
     class MainViewHolder extends RecyclerView.ViewHolder{
 
         final CheckBox checkBox;
+        final TextView textView;
 
         public MainViewHolder(@NonNull View itemView) {
             super(itemView);
 
             checkBox = itemView.findViewById(R.id.checkBox);
+            textView = itemView.findViewById(R.id.dater);
         }
 
         public void bind(TodoItem item){
             checkBox.setText(item.head);
             checkBox.setChecked(item.isCheck);
+            textView.setText(item.dater);
         }
     }
 

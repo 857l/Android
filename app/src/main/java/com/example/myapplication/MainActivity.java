@@ -25,20 +25,6 @@ import adapters.TasksAdapter;
 
 public class MainActivity extends AppCompatActivity{
 
-   /* ArrayList<TodoItem> todoItems = new ArrayList<>();
-
-    public void initItems(){
-        todoItems.add(new TodoItem(true, "blabla"));
-        todoItems.add(new TodoItem(true, "bladddasdasdasdasdbasdla"));
-        todoItems.add(new TodoItem(true, "blaasdasdbla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blddddabla"));
-        todoItems.add(new TodoItem(true, "blaasdbla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
-
-    }
-*/
-
     Fragment taskFragment = new TaskFragment();
     Fragment calendarFragment = new CalendarFragment();
     Fragment settingFragment = new SettingFragment();
@@ -87,27 +73,6 @@ public class MainActivity extends AppCompatActivity{
                 return false;
             }
         });
-
-
-
-
-        /*RecyclerView mainRecyclerView = findViewById(R.id.main_RecyclerView);
-        mainRecyclerView.setAdapter(new TaskListAdapter(todoItems));
-
-        initItems();
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-
-
-        mainRecyclerView.setLayoutManager(linearLayoutManager);
-
-        FloatingActionButton actionButton = findViewById(R.id.floatingActionButton);*/
-
-        /*actionButton.setOnClickListener(new View.OnClickListener{
-            public
-        });*/
-
 
     }
     private void changeFragment(Fragment newFragment){

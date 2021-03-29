@@ -54,17 +54,12 @@ public class TaskFragment extends Fragment {
     ArrayList<TodoItem> todoItems = new ArrayList<>();
 
     public void initItems(){
-        todoItems.add(new TodoItem(true, "blabla"));
-        todoItems.add(new TodoItem(true, "bladddasdasdasdasdbasdla"));
-        todoItems.add(new TodoItem(true, "blaasdasdbla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blddddabla"));
-        todoItems.add(new TodoItem(true, "blaasdbla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
-        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+        todoItems.add(new TodoItem(true, "Классное задание", "01.01.2048"));
+        todoItems.add(new TodoItem(true, "Сходить в магаз", "29.23.2021"));
+        todoItems.add(new TodoItem(true, "Почитать книжку", "15.03.2022"));
+        todoItems.add(new TodoItem(true, "Завести собаку", "17.08.2023"));
+        todoItems.add(new TodoItem(true, "Поступить в универ", "01.05.2024"));
+        todoItems.add(new TodoItem(true, "Сделать дз по инфе", "45.13.2150"));
 
     }
 

@@ -19,8 +19,6 @@ import adapters.TaskListAdapter;
 
 public class TaskFragment extends Fragment {
 
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,12 +61,18 @@ public class TaskFragment extends Fragment {
         todoItems.add(new TodoItem(true, "blddddabla"));
         todoItems.add(new TodoItem(true, "blaasdbla"));
         todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+        todoItems.add(new TodoItem(true, "blasdasdasdasdasdasdasdasdabla"));
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_task, container, false);
+
         RecyclerView mainRecyclerView = (RecyclerView) view.findViewById(R.id.main_RecyclerView);
 
         mainRecyclerView.setAdapter(new TaskListAdapter(todoItems));
@@ -80,6 +84,6 @@ public class TaskFragment extends Fragment {
 
         mainRecyclerView.setLayoutManager(linearLayoutManager);
 
-        return inflater.inflate(R.layout.fragment_task, container, false);
+        return view;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
+import com.example.myapplication.activities.EditTaskView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -53,7 +56,7 @@ public class TaskFragment extends Fragment {
 
     ArrayList<TodoItem> todoItems = new ArrayList<>();
 
-    public void initItems(){
+    /*public void initItems(){
         todoItems.add(new TodoItem(true, "Классное задание", "01.01.2048"));
         todoItems.add(new TodoItem(true, "Сходить в магаз", "29.23.2021"));
         todoItems.add(new TodoItem(true, "Почитать книжку", "15.03.2022"));
@@ -61,7 +64,7 @@ public class TaskFragment extends Fragment {
         todoItems.add(new TodoItem(true, "Поступить в универ", "01.05.2024"));
         todoItems.add(new TodoItem(true, "Сделать дз по инфе", "45.13.2150"));
 
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,15 +72,24 @@ public class TaskFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
         RecyclerView mainRecyclerView = (RecyclerView) view.findViewById(R.id.main_RecyclerView);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
 
         mainRecyclerView.setAdapter(new TaskListAdapter(todoItems));
 
-        initItems();
+        //initItems();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
         mainRecyclerView.setLayoutManager(linearLayoutManager);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditTaskView.class);
+                startActivityForResult(intent, 404);
+            }
+        });
 
         return view;
     }

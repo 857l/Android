@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,7 @@ public class EditTaskView extends AppCompatActivity {
     TextView textView;
     EditText editText;
     CalendarView calendarView;
+    String date;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,18 +47,25 @@ public class EditTaskView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                TodoItem todoItem = new TodoItem(true, editText.getContext().toString());
+                TodoItem todoItem = new TodoItem(true, editText.getContext().toString(), date);
 
                 if(editText.getContext().toString().isEmpty()){
                     Toast.makeText(v.getContext(), "Input name of task", Toast.LENGTH_LONG).show();
                 }
                 else{
                     Intent intent = new Intent();
-                    intent.putExtra("task", todoItem.getClass());
+                    intent.putExtra("task", todoItem);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
             }
         });
+
+        /*calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                date = dayOfMonth + "." + month + "." + year;
+            }
+        });*/
     }
 }

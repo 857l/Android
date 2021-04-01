@@ -7,9 +7,9 @@ public class TodoItem implements Serializable {
     public String head;
     public String dater;
 
-    public TodoItem(boolean isCheck, String head /*, String dater */) {
+    public TodoItem(boolean isCheck, String head, String dater ) {
         this.isCheck = isCheck;
         this.head = head;
-        this.dater = "123";
+        this.dater = dater;
     }
 }

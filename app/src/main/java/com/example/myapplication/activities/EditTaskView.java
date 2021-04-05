@@ -26,7 +26,7 @@ import java.util.Date;
 import models.ClassTask;
 
 public class EditTaskView extends AppCompatActivity {
-    Button savebutton;
+    Button saveButton;
     TextView textView;
     EditText editText;
     CalendarView calendarView;
@@ -37,17 +37,17 @@ public class EditTaskView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
 
-        savebutton = findViewById(R.id.button_save);
+        saveButton = findViewById(R.id.button_save);
         textView = findViewById(R.id.textView);
         editText = findViewById(R.id.NameOfTask);
+
         calendarView = findViewById(R.id.calendarView);
 
-        savebutton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                TodoItem todoItem = new TodoItem(true, editText.getContext().toString(), date);
+                TodoItem todoItem = new TodoItem(true, editText.getText().toString(), date);
 
                 if(editText.getContext().toString().isEmpty()){
                     Toast.makeText(v.getContext(), "Input name of task", Toast.LENGTH_LONG).show();
@@ -61,11 +61,7 @@ public class EditTaskView extends AppCompatActivity {
             }
         });
 
-        /*calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date = dayOfMonth + "." + month + "." + year;
-            }
-        });*/
+
     }
 }
+

@@ -3,5 +3,9 @@
     <string name="fragment_task">task</string>
     <string name="fragment_calendar">calendar</string>
     <string name="fragment_settings">settings</string>
+    <string name="your_calendar">Your Calendar</string>
+    <string name="name_of_task">Name of task</string>
+    <string name="creating_a_task">Creating a Task</string>
+    <string name="save">Save</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

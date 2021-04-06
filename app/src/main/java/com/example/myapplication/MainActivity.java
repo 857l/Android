@@ -4,24 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.myapplication.fragment.CalendarFragment;
 import com.example.myapplication.fragment.SettingFragment;
 import com.example.myapplication.fragment.TaskFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-
-import adapters.TaskListAdapter;
-import adapters.TasksAdapter;
 
 public class MainActivity extends AppCompatActivity{
 

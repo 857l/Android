@@ -7,5 +7,7 @@
     <string name="name_of_task">Name of task</string>
     <string name="creating_a_task">Creating a Task</string>
     <string name="save">Save</string>
+    <string name="your_tasks">Your Tasks</string>
+    <string name="todo">TODO</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

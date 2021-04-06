@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -42,6 +43,25 @@ public class EditTaskView extends AppCompatActivity {
         editText = findViewById(R.id.NameOfTask);
 
         calendarView = findViewById(R.id.calendarView);
+
+        try {
+            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+                @Override
+                public void onSelectedDayChange(CalendarView view, int year,
+                                                int month, int dayOfMonth) {
+                    int mYear = year;
+                    int mMonth = month;
+                    int mDay = dayOfMonth;
+                    String selectedDate = new StringBuilder().append(mMonth + 1)
+                            .append("-").append(mDay).append("-").append(mYear)
+                            .append(" ").toString();
+                    date = selectedDate;
+                }
+            });
+            }catch(Exception ex){
+            Log.d("log_tag",ex.getMessage());
+        }
 
         saveButton.setOnClickListener(new View.OnClickListener() {
 

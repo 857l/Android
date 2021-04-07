@@ -61,7 +61,7 @@ public class EditTaskView extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                TodoItem todoItem = new TodoItem(true, editText.getText().toString(), getTodayDay(calendarView.getDate()));
+                TodoItem todoItem = new TodoItem(true, editText.getText().toString(), date);
 
                 if(editText.getContext().toString().isEmpty()){
                     Toast.makeText(v.getContext(), "Input name of task", Toast.LENGTH_LONG).show();

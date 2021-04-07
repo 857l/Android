@@ -42,32 +42,26 @@ public class EditTaskView extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         editText = findViewById(R.id.NameOfTask);
 
-        calendarView = findViewById(R.id.calendarView);
+        calendarView = findViewById(R.id.CreatingCalendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
-        try {
-            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
-                @Override
-                public void onSelectedDayChange(CalendarView view, int year,
-                                                int month, int dayOfMonth) {
-                    int mYear = year;
-                    int mMonth = month;
-                    int mDay = dayOfMonth;
-                    String selectedDate = new StringBuilder().append(mMonth + 1)
-                            .append("-").append(mDay).append("-").append(mYear)
-                            .append(" ").toString();
-                    date = selectedDate;
-                }
-            });
-            }catch(Exception ex){
-            Log.d("log_tag",ex.getMessage());
-        }
-
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year,
+                                            int month, int dayOfMonth) {
+                int mYear = year;
+                int mMonth = month;
+                int mDay = dayOfMonth;
+                String selectedDate = new StringBuilder().append(mMonth + 1)
+                        .append(".").append(mDay).append(".").append(mYear)
+                        .append(" ").toString();
+                date = selectedDate;
+            }
+        });
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                TodoItem todoItem = new TodoItem(true, editText.getText().toString(), date);
+                TodoItem todoItem = new TodoItem(true, editText.getText().toString(), getTodayDay(calendarView.getDate()));
 
                 if(editText.getContext().toString().isEmpty()){
                     Toast.makeText(v.getContext(), "Input name of task", Toast.LENGTH_LONG).show();
@@ -83,5 +77,12 @@ public class EditTaskView extends AppCompatActivity {
 
 
     }
+
+    private String getTodayDay(long day){
+        String d = new StringBuilder().append(day).toString();
+        return d;
+    }
+
+
 }
 

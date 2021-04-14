@@ -1,30 +1,20 @@
 package com.example.myapplication.activities;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
 
-import java.util.Date;
-
-import models.ClassTask;
+import java.util.ArrayList;
 
 public class EditTaskView extends AppCompatActivity {
     Button saveButton;
@@ -32,6 +22,10 @@ public class EditTaskView extends AppCompatActivity {
     EditText editText;
     CalendarView calendarView;
     String date;
+
+    public static ArrayList<TodoItem>save_todoItems;
+    public static final String SHARED_PREFS = "sharedPrefs";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,10 +45,7 @@ public class EditTaskView extends AppCompatActivity {
                 int mYear = year;
                 int mMonth = month;
                 int mDay = dayOfMonth;
-                String selectedDate = new StringBuilder().append(mMonth + 1)
-                        .append(".").append(mDay).append(".").append(mYear)
-                        .append(" ").toString();
-                date = selectedDate;
+                dayIs(mYear, mMonth, mDay);
             }
         });
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -62,27 +53,41 @@ public class EditTaskView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 TodoItem todoItem = new TodoItem(true, editText.getText().toString(), date);
+                Intent intent = new Intent();
 
-                if(editText.getContext().toString().isEmpty()){
-                    Toast.makeText(v.getContext(), "Input name of task", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Intent intent = new Intent();
-                    intent.putExtra("task", todoItem);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
+                intent.putExtra("task", todoItem);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
-
-
     }
 
-    private String getTodayDay(long day){
-        String d = new StringBuilder().append(day).toString();
-        return d;
+    private void dayIs(int mYear, int mMonth, int mDay){
+        String selectedDate;
+        if (mDay / 10 == 0){
+            selectedDate = new StringBuilder().append("0").append(mDay)
+                    .append(".").append(mMonth + 1).append(".").append(mYear)
+                    .append(" ").toString();
+            date = selectedDate;
+            if (mMonth / 10 == 0){
+                selectedDate = new StringBuilder().append("0").append(mDay)
+                        .append(".").append("0").append(mMonth + 1).append(".").append(mYear)
+                        .append(" ").toString();
+                date = selectedDate;
+            }
+        }
+        else if (mMonth / 10 == 0){
+            selectedDate = new StringBuilder().append(mDay)
+                    .append(".").append("0").append(mMonth + 1).append(".").append(mYear)
+                    .append(" ").toString();
+            date = selectedDate;
+        }
+        else{
+            selectedDate = new StringBuilder().append(mDay)
+                    .append(".").append(mMonth + 1).append(".").append(mYear)
+                    .append(" ").toString();
+            date = selectedDate;
+        }
     }
-
-
 }
 

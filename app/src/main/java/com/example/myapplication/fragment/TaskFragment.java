@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.BottomSheetForTask;
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
 import com.example.myapplication.activities.EditTaskView;
@@ -59,13 +60,15 @@ public class TaskFragment extends Fragment {
 
     ArrayList<TodoItem> todoItems = new ArrayList<>();
     TaskListAdapter adapter;
+    TaskListAdapter.RecyclerViewClickListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
-        adapter = new TaskListAdapter(todoItems);
+        setOnClickListener();
+        adapter = new TaskListAdapter(todoItems, listener);
 
         RecyclerView mainRecyclerView = (RecyclerView) view.findViewById(R.id.main_RecyclerView);
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
@@ -86,6 +89,16 @@ public class TaskFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void setOnClickListener() {
+        listener = new TaskListAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                BottomSheetForTask bottomSheetForTask = new BottomSheetForTask();
+                bottomSheetForTask.show(getFragmentManager(), "TAG");
+            }
+        };
     }
 
     @Override

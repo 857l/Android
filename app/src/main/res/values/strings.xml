@@ -9,5 +9,12 @@
     <string name="save">Save</string>
     <string name="your_tasks">Your Tasks</string>
     <string name="todo">TODO</string>
+    <string name="title">Title</string>
+    <string name="change_time">Change Time</string>
+    <string name="_16_40">16:40</string>
+    <string name="_21_04_2021">21.04.2021</string>
+    <string name="change_date">Change Date</string>
+    <string name="change_note">Change Note</string>
+    <string name="change_title">Change Title</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

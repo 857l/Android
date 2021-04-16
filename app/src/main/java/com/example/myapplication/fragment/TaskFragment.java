@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myapplication.BottomSheetForTask;
+import com.example.myapplication.activities.BottomSheetForTask;
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
 import com.example.myapplication.activities.EditTaskView;
@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-import adapters.TaskListAdapter;
+import com.example.myapplication.adapters.TaskListAdapter;
 
 import static android.app.Activity.RESULT_OK;
 

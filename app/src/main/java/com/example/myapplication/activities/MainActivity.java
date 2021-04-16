@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.myapplication.R;
 import com.example.myapplication.fragment.CalendarFragment;
 import com.example.myapplication.fragment.SettingFragment;
 import com.example.myapplication.fragment.TaskFragment;

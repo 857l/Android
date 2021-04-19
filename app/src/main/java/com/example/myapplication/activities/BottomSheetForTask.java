@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.Date;
 
-public class BottomSheetForTask extends BottomSheetDialogFragment implements TimeDialog.TimeDialogListener {
+public class BottomSheetForTask extends BottomSheetDialogFragment implements TitleDialog.TimeDialogListener {
 
     public BottomSheetForTask(){
     }
@@ -87,7 +87,7 @@ public class BottomSheetForTask extends BottomSheetDialogFragment implements Tim
     }
 
     @Override
-    public void applyData(String new_time) {
-        newTime.setText("new_time");
+    public void sendText(String new_title) {
+        newTitle.setText(new_title);
     }
 }

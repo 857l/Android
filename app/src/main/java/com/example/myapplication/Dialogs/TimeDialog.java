@@ -20,7 +20,6 @@ import java.util.Date;
 public class TimeDialog extends AppCompatDialogFragment {
 
     private TimePicker timePicker;
-    private TimeDialogListener listener;
 
     @NonNull
     @Override
@@ -54,20 +53,4 @@ public class TimeDialog extends AppCompatDialogFragment {
 
         return builder.create();
     }
-
-    /*@Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        try {
-            listener = (TimeDialogListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + "must implements TimeDialogListener");
-        }
-    }*/
-
-    public interface TimeDialogListener{
-        void applyData(String new_time);
-    }
-
 }

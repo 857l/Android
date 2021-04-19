@@ -2,6 +2,7 @@ package com.example.myapplication.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import com.example.myapplication.R;
 public class TitleDialog extends AppCompatDialogFragment {
 
     private EditText editText;
-    private TimeDialog.TimeDialogListener listener;
+    private TimeDialogListener listener;
 
     @NonNull
     @Override
@@ -39,12 +40,30 @@ public class TitleDialog extends AppCompatDialogFragment {
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        String new_title = editText.getText().toString();
 
+                        listener.sendText(new_title);
                     }
                 });
 
         editText = view.findViewById(R.id.edit_new_title);
 
         return builder.create();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            listener = (TimeDialogListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + "must implements TimeDialogListener");
+        }
+    }
+
+    public interface TimeDialogListener{
+        void sendText(String new_title);
     }
 }

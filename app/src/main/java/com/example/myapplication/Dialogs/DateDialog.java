@@ -17,7 +17,6 @@ import com.example.myapplication.R;
 public class DateDialog extends AppCompatDialogFragment {
 
     private CalendarView calendarView;
-    private TimeDialog.TimeDialogListener listener;
 
     @NonNull
     @Override

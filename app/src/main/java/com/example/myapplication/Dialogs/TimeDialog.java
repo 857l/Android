@@ -14,12 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.DialogListener;
 
 import java.util.Date;
 
-public class TimeDialog extends AppCompatDialogFragment {
+public class TimeDialog extends AppCompatDialogFragment implements DialogListener.AllDialogListener.TimeDialogListener{
 
     private TimePicker timePicker;
+
+    public DialogListener.AllDialogListener.TimeDialogListener timeDialogListener;
 
     @NonNull
     @Override
@@ -40,17 +43,34 @@ public class TimeDialog extends AppCompatDialogFragment {
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /*String new_time = new StringBuilder()
+                        String new_time = new StringBuilder()
                                 .append(timePicker.getCurrentHour())
                                 .append(":")
                                 .append(timePicker.getCurrentMinute())
                                 .toString();
-                        listener.applyData("new_time");*/
+
+                        timeDialogListener.sendTime(new_time);
                     }
                 });
 
         timePicker = view.findViewById(R.id.myTimePicker);
 
         return builder.create();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            timeDialogListener = (DialogListener.AllDialogListener.TimeDialogListener) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + "must implements TimeDialogListener");
+        }
+    }
+
+    @Override
+    public void sendTime(String new_time) {
     }
 }

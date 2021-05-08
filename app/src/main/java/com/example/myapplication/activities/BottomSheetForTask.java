@@ -19,15 +19,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.Date;
 
-public class BottomSheetForTask extends BottomSheetDialogFragment implements TitleDialog.TimeDialogListener {
+public class BottomSheetForTask extends BottomSheetDialogFragment implements DialogListener.AllDialogListener.TitleDialogListener, DialogListener.AllDialogListener.DateDialogListener, DialogListener.AllDialogListener.TimeDialogListener {
 
     public BottomSheetForTask(){
     }
 
 
-    private TextView newTime;
-    private TextView newDate;
-    private TextView newTitle;
+    public TextView newTime;
+    public TextView newDate;
+    public TextView newTitle;
 
     private Button changeTime;
     private Button changeDate;
@@ -73,21 +73,34 @@ public class BottomSheetForTask extends BottomSheetDialogFragment implements Tit
 
     private void openDialogForTime() {
         TimeDialog timeDialog = new TimeDialog();
+        timeDialog.setTargetFragment(BottomSheetForTask.this, 1);
         timeDialog.show(getFragmentManager(), "time dialog");
     }
 
     private void openDialogForDate() {
         DateDialog dateDialog = new DateDialog();
+        dateDialog.setTargetFragment(BottomSheetForTask.this, 1);
         dateDialog.show(getFragmentManager(), "date dialog");
     }
 
     private void openDialogForTitle() {
         TitleDialog titleDialog = new TitleDialog();
+        titleDialog.setTargetFragment(BottomSheetForTask.this, 1);
         titleDialog.show(getFragmentManager(), "title dialog");
     }
 
     @Override
-    public void sendText(String new_title) {
+    public void sendTitle(String new_title) {
         newTitle.setText(new_title);
+    }
+
+    @Override
+    public void sendTime(String new_time) {
+        newTime.setText(new_time);
+    }
+
+    @Override
+    public void sendDate(String new_date) {
+        newDate.setText(new_date);
     }
 }

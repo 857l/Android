@@ -1,5 +1,6 @@
 package com.example.myapplication.Dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,11 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.DialogListener;
 
-public class TitleDialog extends AppCompatDialogFragment {
+public class TitleDialog extends AppCompatDialogFragment implements DialogListener.AllDialogListener.TitleDialogListener {
 
     private EditText editText;
-    private TimeDialogListener listener;
+
+    public DialogListener.AllDialogListener.TitleDialogListener titleDialogListener;
 
     @NonNull
     @Override
@@ -42,7 +45,7 @@ public class TitleDialog extends AppCompatDialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         String new_title = editText.getText().toString();
 
-                        listener.sendText(new_title);
+                        titleDialogListener.sendTitle(new_title);
                     }
                 });
 
@@ -56,14 +59,14 @@ public class TitleDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            listener = (TimeDialogListener) context;
+            titleDialogListener = (DialogListener.AllDialogListener.TitleDialogListener) getTargetFragment();
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
-                    + "must implements TimeDialogListener");
+                    + "must implements TitleDialogListener");
         }
     }
 
-    public interface TimeDialogListener{
-        void sendText(String new_title);
+    @Override
+    public void sendTitle(String new_Title) {
     }
 }

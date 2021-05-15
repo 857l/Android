@@ -33,7 +33,6 @@ public class EditTaskView extends AppCompatActivity {
         setContentView(R.layout.activity_edit_task);
 
         saveButton = findViewById(R.id.button_save);
-        textView = findViewById(R.id.textView);
         editText = findViewById(R.id.NameOfTask);
 
         calendarView = findViewById(R.id.CreatingCalendarView);

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
+import com.example.myapplication.activities.DialogListener;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         return todoItems.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         final CheckBox checkBox;
         final TextView textView;
@@ -55,7 +56,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             checkBox = itemView.findViewById(R.id.checkBox);
             textView = itemView.findViewById(R.id.dater);
 
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onClick(todoItems.get(position));
+                    }
+                }
+            });
         }
 
         public void bind(TodoItem item){
@@ -64,13 +73,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             textView.setText(item.dater);
         }
 
-        @Override
-        public void onClick(View view) {
-            listener.onClick(view, getAdapterPosition());
-        }
+
     }
 
     public interface RecyclerViewClickListener{
-        void onClick(View view, int position);
+        void onClick(TodoItem todoItem);
     }
+
+    public void setRecyclerViewClickListener(RecyclerViewClickListener listener){
+        this.listener = listener;
+    }
+
 }

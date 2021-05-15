@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.activities.BottomSheetForTask;
 import com.example.myapplication.R;
 import com.example.myapplication.TodoItem;
+import com.example.myapplication.activities.DialogListener;
 import com.example.myapplication.activities.EditTaskView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -24,7 +26,7 @@ import com.example.myapplication.adapters.TaskListAdapter;
 
 import static android.app.Activity.RESULT_OK;
 
-public class TaskFragment extends Fragment {
+public class TaskFragment extends Fragment{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,7 +69,7 @@ public class TaskFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_task, container, false);
 
-        setOnClickListener();
+        /*setOnClickListener();*/
         adapter = new TaskListAdapter(todoItems, listener);
 
         RecyclerView mainRecyclerView = (RecyclerView) view.findViewById(R.id.main_RecyclerView);
@@ -88,17 +90,22 @@ public class TaskFragment extends Fragment {
             }
         });
 
-        return view;
-    }
-
-    private void setOnClickListener() {
-        listener = new TaskListAdapter.RecyclerViewClickListener() {
+        adapter.setRecyclerViewClickListener(new TaskListAdapter.RecyclerViewClickListener() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(TodoItem todoItem) {
                 BottomSheetForTask bottomSheetForTask = new BottomSheetForTask();
+                Bundle bundle = new Bundle();
+                ArrayList<String>item = new ArrayList<String>();
+                item.add(todoItem.head);
+                item.add(todoItem.dater);
+                bottomSheetForTask.setArguments(bundle);
+                //Toast.makeText(getContext(), todoItem.dater + " " + todoItem.head, Toast.LENGTH_SHORT).show();
+                bundle.putStringArrayList("item", item);
                 bottomSheetForTask.show(getFragmentManager(), "TAG");
             }
-        };
+        });
+
+        return view;
     }
 
     @Override

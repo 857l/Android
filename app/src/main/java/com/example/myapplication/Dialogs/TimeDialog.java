@@ -43,10 +43,34 @@ public class TimeDialog extends AppCompatDialogFragment implements DialogListene
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String new_time = new StringBuilder()
+
+                        String h;
+                        String m;
+
+                        if (timePicker.getCurrentHour() < 10){
+                            h = new StringBuilder()
+                                    .append("0")
+                                    .append(timePicker.getCurrentHour())
+                                    .toString();
+                        }
+                        else h = new StringBuilder()
                                 .append(timePicker.getCurrentHour())
-                                .append(":")
+                                .toString();
+
+                        if (timePicker.getCurrentMinute() < 10){
+                            m = new StringBuilder()
+                                    .append("0")
+                                    .append(timePicker.getCurrentMinute())
+                                    .toString();
+                        }
+                        else m = new StringBuilder()
                                 .append(timePicker.getCurrentMinute())
+                                .toString();
+
+                        String new_time = new StringBuilder()
+                                .append(h)
+                                .append(":")
+                                .append(m)
                                 .toString();
 
                         timeDialogListener.sendTime(new_time);

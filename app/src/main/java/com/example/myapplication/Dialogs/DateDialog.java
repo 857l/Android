@@ -1,6 +1,7 @@
 package com.example.myapplication.Dialogs;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,15 +43,13 @@ public class DateDialog extends AppCompatDialogFragment implements DialogListene
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String[] new_date = {""};
-                        /*calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
+                        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                             @Override
-                            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                                new_date[0] = new StringBuilder().append(dayOfMonth).append(".").append(month).append(".").append(year).toString();
+                            public void onSelectedDayChange(@NonNull CalendarView view, final int year, final int month, final int dayOfMonth) {
+                                String date = dayOfMonth + "-" + month + "-" + year;
+                                dateDialogListener.sendDate(date);
                             }
-                        });*/
-                        dateDialogListener.sendDate(new_date[0]);
+                        });
                     }
                 });
 

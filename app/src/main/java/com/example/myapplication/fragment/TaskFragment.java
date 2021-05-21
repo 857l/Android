@@ -93,13 +93,18 @@ public class TaskFragment extends Fragment{
         adapter.setRecyclerViewClickListener(new TaskListAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(TodoItem todoItem) {
+
                 BottomSheetForTask bottomSheetForTask = new BottomSheetForTask();
                 Bundle bundle = new Bundle();
                 ArrayList<String>item = new ArrayList<String>();
+
                 item.add(todoItem.head);
                 item.add(todoItem.dater);
+
                 bottomSheetForTask.setArguments(bundle);
+
                 //Toast.makeText(getContext(), todoItem.dater + " " + todoItem.head, Toast.LENGTH_SHORT).show();
+
                 bundle.putStringArrayList("item", item);
                 bottomSheetForTask.show(getFragmentManager(), "TAG");
             }

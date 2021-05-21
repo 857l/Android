@@ -23,9 +23,6 @@ public class EditTaskView extends AppCompatActivity {
     CalendarView calendarView;
     String date;
 
-    public static ArrayList<TodoItem>save_todoItems;
-    public static final String SHARED_PREFS = "sharedPrefs";
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

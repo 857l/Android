@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.activities.DialogListener;
+import com.example.myapplication.fragment.TaskFragment;
 
 public class TitleDialog extends AppCompatDialogFragment implements DialogListener.AllDialogListener.TitleDialogListener {
 

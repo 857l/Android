@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -54,7 +55,7 @@ public class BottomSheetForTask extends BottomSheetDialogFragment implements Dia
         ArrayList<String> item = bundle.getStringArrayList("item");
         newDate.setText(item.get(1));
         newTitle.setText(item.get(0));
-        newTime.setText("void");
+        newTime.setText("Set Text");
 
         changeTime = view.findViewById(R.id.ChangeTime);
         changeDate = view.findViewById(R.id.ChangeDate);
